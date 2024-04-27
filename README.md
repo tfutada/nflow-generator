@@ -142,3 +142,6 @@ and the output interface is set to the opposite value.
 If the -f is missing, both snmp interface indexes will be set to 0. [Default]
 
 To learn more about Netflow version 5 datagram formats, see the [Cisco Netflow documentation](http://www.cisco.com/c/en/us/td/docs/net_mgmt/netflow_collection_engine/3-6/user/guide/format.html)
+
+### modify by TF
+

@@ -35,9 +35,9 @@ var opts struct {
 	CollectorIP   string `short:"t" long:"target" description:"target ip address of the netflow collector"`
 	CollectorPort string `short:"p" long:"port" description:"port number of the target netflow collector"`
 	SpikeProto    string `short:"s" long:"spike" description:"run a second thread generating a spike for the specified protocol"`
-    FalseIndex    bool   `short:"f" long:"false-index" description:"generate false SNMP interface indexes, otherwise set to 0"`
-    FlowCount     int    `short:"c" long:"flow-count" description:"set the number of flows to generate in each iteration" default:"16" max:"128" min:"8"`
-    Help          bool   `short:"h" long:"help" description:"show nflow-generator help"`
+	FalseIndex    bool   `short:"f" long:"false-index" description:"generate false SNMP interface indexes, otherwise set to 0"`
+	FlowCount     int    `short:"c" long:"flow-count" description:"set the number of flows to generate in each iteration" default:"16" max:"128" min:"8"`
+	Help          bool   `short:"h" long:"help" description:"show nflow-generator help"`
 }
 
 func main() {
@@ -74,7 +74,7 @@ func main() {
 		if opts.SpikeProto != "" {
 			GenerateSpike()
 		}
-		if n > 900 {
+		if n > 990 {
 			data := GenerateNetflow(8)
 			buffer := BuildNFlowPayload(data)
 			_, err := conn.Write(buffer.Bytes())
@@ -90,12 +90,12 @@ func main() {
 			}
 		}
 		// add some periodic spike data
-		if n < 150 {
+		if n < 10 {
 			sleepInt := time.Duration(3000)
 			time.Sleep(sleepInt * time.Millisecond)
 		}
-		sleepInt := time.Duration(n)
-		time.Sleep(sleepInt * time.Millisecond)
+		//sleepInt := time.Duration(n)
+		//time.Sleep(sleepInt * time.Millisecond)
 	}
 }
 
